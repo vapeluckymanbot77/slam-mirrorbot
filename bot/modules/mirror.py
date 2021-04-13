@@ -130,7 +130,7 @@ class MirrorListener(listeners.MirrorListeners):
             uname = f"@{self.message.from_user.username}"
         else:
             uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
-        msg = f"<b>Hey 👋 {uname} your download has been stopped 😐:</b>\n\n🌲 <b>Reason</b>:<code>{error}</code>"
+        msg = f"<b>Hey 👋 {uname} your download has been stopped 😐:</b>\n\n🌲 <b>Reason</b>: <code>{error}</code>"
         sendMessage(msg, self.bot, self.update)
         if count == 0:
             self.clean()
@@ -248,7 +248,7 @@ def _mirror(bot, update, isTar=False, extract=False):
     else:
         tag = None
     if not bot_utils.is_url(link) and not bot_utils.is_magnet(link):
-        sendMessage("𝐃𝐨𝐧'𝐭 𝐒𝐩𝐚𝐦 😑\n\n 𝐢𝐟 𝐲𝐨𝐮 𝐝𝐨𝐧'𝐭 𝐤𝐧𝐨𝐰 𝐡𝐨𝐰 𝐭𝐨 𝐌𝐢𝐫𝐫𝐨𝐫 𝐭𝐡𝐞𝐧 𝐜𝐡𝐞𝐜𝐤𝐨𝐮𝐭 /How_To_Mirror 🤡", bot, update)
+        sendMessage("𝙳𝚘𝚗'𝚝 𝚂𝚙𝚊𝚖 𝚙𝚕𝚎𝚊𝚜𝚎 😐\n\n𝙸𝚏 𝚢𝚘𝚞 𝚍𝚘𝚗'𝚝 𝚔𝚗𝚘𝚠 𝙷𝚘𝚠 𝚝𝚘 𝙼𝚒𝚛𝚛𝚘𝚛 𝚊𝚗𝚍 𝚞𝚜𝚎 𝚋𝚘𝚝 𝚝𝚑𝚎𝚗 𝚌𝚑𝚎𝚌𝚔 ✅ 𝚃𝚞𝚝𝚘𝚛𝚒𝚊𝚕 𝚅𝚒𝚍𝚎𝚘 📷\n\n👉 /Tutorial_Video", bot, update)
         return
 
     try:
