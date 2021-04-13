@@ -25,7 +25,7 @@ class AriaDownloadHelper(DownloadHelper):
         if ENABLE_FILESIZE_LIMIT:
           if download.total_length / 1024 / 1024 / 1024 > MAX_TORRENT_SIZE:
               LOGGER.info(f" Download size Exceeded: {gid}")
-              dl.getListener().onDownloadError(f' Your Link Size Larger than {MAX_TORRENT_SIZE}GB 😐\nI am sorry I can't Mirror this 🐸')
+              dl.getListener().onDownloadError(f'Your Link Size Larger than {MAX_TORRENT_SIZE}GB 😐\nI am sorry I can't Mirror this')
               aria2.remove([download])
           return
         update_all_messages()
