@@ -86,9 +86,9 @@ def update_all_messages():
             	    uldl_bytes += float(speedy.split('K')[0]) * 1024
                 elif 'MB/s' in speedy:
                     uldl_bytes += float(speedy.split('M')[0]) * 1048576
-        dlspeed = get_readable_file_size(dlspeed_bytes)
-        ulspeed = get_readable_file_size(uldl_bytes)
-        msg += f"\n<b>DL:</b> {dlspeed}ps 🔻| <b>UL:</b> {ulspeed}ps 🔺\n"
+        #dlspeed = get_readable_file_size(dlspeed_bytes)
+        #ulspeed = get_readable_file_size(uldl_bytes)
+        #msg += f"\n<b>DL:</b> {dlspeed}ps 🔻| <b>UL:</b> {ulspeed}ps 🔺\n"
     with status_reply_dict_lock:
         for chat_id in list(status_reply_dict.keys()):
             if status_reply_dict[chat_id] and msg != status_reply_dict[chat_id].text:
@@ -104,9 +104,7 @@ def update_all_messages():
 
 def sendStatusMessage(msg, bot):
     progress = get_readable_message()
-    progress += f"<b>CPU:</b> {psutil.cpu_percent()}%\n" \
-           f"<b>RAM:</b> {psutil.virtual_memory().percent}%\n" \
-           f"<b>DISK:</b> {psutil.disk_usage('/').percent}%\n"
+    progress += f"🐸🐸🐸🐸🐸🐸🐸🐸"
     with download_dict_lock:
         dlspeed_bytes = 0
         uldl_bytes = 0
@@ -122,9 +120,9 @@ def sendStatusMessage(msg, bot):
             	    uldl_bytes += float(speedy.split('K')[0]) * 1024
                 elif 'MB/s' in speedy:
                     uldl_bytes += float(speedy.split('M')[0]) * 1048576
-        dlspeed = get_readable_file_size(dlspeed_bytes)
-        ulspeed = get_readable_file_size(uldl_bytes)
-        progress += f"\n<b>DL: </b>{dlspeed}ps 🔻| <b>UL: </b>{ulspeed}ps 🔺\n"
+        #dlspeed = get_readable_file_size(dlspeed_bytes)
+        #ulspeed = get_readable_file_size(uldl_bytes)
+        #progress += f"\n<b>DL: </b>{dlspeed}ps 🔻| <b>UL: </b>{ulspeed}ps 🔺\n"
     with status_reply_dict_lock:
         if msg.message.chat.id in list(status_reply_dict.keys()):
             try:
