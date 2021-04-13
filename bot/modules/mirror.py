@@ -248,7 +248,7 @@ def _mirror(bot, update, isTar=False, extract=False):
     else:
         tag = None
     if not bot_utils.is_url(link) and not bot_utils.is_magnet(link):
-        sendMessage('𝙳𝚘𝚗'𝚝 𝚜𝚙𝚊𝚖 𝚑𝚎𝚛𝚎! 𝚒𝚏 𝚢𝚘𝚞 𝚍𝚘𝚗'𝚝 𝚔𝚗𝚘𝚠 𝚑𝚘𝚠 𝙼𝚒𝚛𝚛𝚘𝚛 𝚝𝚑𝚎𝚗 𝚌𝚑𝚎𝚌𝚔𝚘𝚞𝚝 /How_To_Mirror', bot, update)
+        sendMessage("𝙳𝚘𝚗'𝚝 𝚜𝚙𝚊𝚖 𝚑𝚎𝚛𝚎! 𝚒𝚏 𝚢𝚘𝚞 𝚍𝚘𝚗'𝚝 𝚔𝚗𝚘𝚠 𝚑𝚘𝚠 𝙼𝚒𝚛𝚛𝚘𝚛 𝚝𝚑𝚎𝚗 𝚌𝚑𝚎𝚌𝚔𝚘𝚞𝚝 /How_To_Mirror 🤡", bot, update)
         return
 
     try:
