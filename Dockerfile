@@ -1,28 +1,40 @@
-FROM ubuntu:22.04
+FROM ubuntu:20.04
 
-WORKDIR /usr/src/app
-RUN chmod 777 /usr/src/app
 
-RUN apt-get -qq update && \
-    apt-get install -y software-properties-common && \
-    apt-add-repository non-free && \
-    apt-get -qq update && \
-    apt-get -qq install -y p7zip-full p7zip-rar aria2 curl pv jq ffmpeg locales python3-lxml && \
-    apt-get purge -y software-properties-common
+RUN mkdir ./app
+RUN chmod 777 ./app
+WORKDIR /app
+
+
+RUN apt-get -qq update
+RUN apt-get -y update && DEBIAN_FRONTEND="noninteractive" \
+    apt-get -qq install -y git python3 python3-pip \
+    aria2 \
+    wget \
+    curl \
+    busybox \
+    unzip \
+    unrar \
+    tar \
+    python3 \
+    ffmpeg \
+    python3-pip \
+    p7zip-full \
+    p7zip-rar
+
+
+ENV LANG="en_US.UTF-8" LANGUAGE="en_US:en"
+
+RUN wget https://rclone.org/install.sh
+RUN bash install.sh
+
+RUN mkdir /app/gautam
+RUN wget -O /app/gautam/gclone.gz https://git.io/JJMSG
+RUN gzip -d /app/gautam/gclone.gz
+RUN chmod 0775 /app/gautam/gclone
 
 COPY requirements.txt .
-COPY extract /usr/local/bin
-COPY pextract /usr/local/bin
-RUN chmod +x /usr/local/bin/extract && chmod +x /usr/local/bin/pextract
 RUN pip3 install --no-cache-dir -r requirements.txt
-
-RUN locale-gen en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
-
 COPY . .
-COPY .netrc /root/.netrc
-RUN chmod +x aria.sh
-
+RUN chmod +x extract
 CMD ["bash","start.sh"]
